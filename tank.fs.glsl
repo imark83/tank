@@ -15,7 +15,7 @@ void main () {
 	float lightDistance = sqrt (lightDirection.y*lightDirection.y 
 			+ lightDirection.y*lightDirection.y + lightDirection.z*lightDirection.z);
 
-	float attenuation = 1.0 / (0.1*lightDistance + 0.2*lightDistance*lightDistance);
+	float attenuation = 1.0 / (0.1*lightDistance + 0.4*lightDistance*lightDistance);
 
 	vec3 scatteredLight = Ambient + LightColor*attenuation;
 	vec3 rgb = min (color.rgb * scatteredLight, vec3(1.0));
