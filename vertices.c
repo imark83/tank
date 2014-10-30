@@ -34,7 +34,9 @@ void generateVertices (GLfloat *verticesLines, GLfloat *verticesTankFace, GLfloa
 		verticesLines[126 + 3*(2*i+1) + 2] = -10.0 +  1.0*i;
 	}
 
-	GLfloat _verticesTankFace [] = {P0, P4, P1, P5, P2, P6, P3, P7, P0, P4, P4, P5, P7, P6};
+	GLfloat _verticesTankFace [] = {
+#include "tank.txt"
+};
 	GLfloat _verticesTankLines [] = {P0, P1, P2, P3, P4, P5, P6, P7, P0, P3, P1, P2, P4, P7, P5, P6, P0, P4, P1, P5, P2, P6, P3, P7};
 	GLfloat _verticesTankTriangle [] = {P4, P5, P8};
 	for (i=0; i<3*nVertices[tankFace]; i++) verticesTankFace[i] = _verticesTankFace[i];

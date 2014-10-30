@@ -23,7 +23,7 @@
 GLuint program[nPrograms];
 GLuint vao[nVao];
 
-GLuint nVertices[] = {84, 14, 24,3};
+GLuint nVertices[] = {84, 3*376, 0, 0}; //24,3};
 
 // BUFFERS
 GLuint buffer[nVao];
@@ -43,7 +43,7 @@ static int notInit = 0;
 
 GLfloat viewPhi = PI/12.0;
 
-GLfloat tankPhi = PI/6.0;
+GLfloat tankPhi = 0;
 GLfloat x = 0.0;
 GLfloat y = 0.0;
 GLfloat z = 0.0;
@@ -116,7 +116,7 @@ void display () {
 	glUniform4fv (glGetUniformLocation (program[tankProgram], "vColor"), 1, greenColor);
 	// DRAW TANK FACES
 	glBindVertexArray (vao[tankFace]);
-	glDrawArrays (GL_TRIANGLE_STRIP, 0, nVertices[tankFace]);
+	glDrawArrays (GL_TRIANGLES, 0, nVertices[tankFace]);
 
 
 
@@ -158,8 +158,8 @@ void display () {
 void timer (int i) {
 	GLuint udelay = 1000 / FPS;
 	GLfloat delay = udelay / 1000.0;
-	x += v*sin (tankPhi)*delay;
-	z -= v*cos (tankPhi)*delay;
+	x += v*cos (-tankPhi)*delay;
+	z -= v*sin (-tankPhi)*delay;
 	GLfloat a;
 	switch (pedal) {
 		case brake: 	a = SIGN (-v)*10.0;

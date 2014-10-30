@@ -10,9 +10,14 @@ uniform mat4 projection;
 uniform vec4 vColor;
 
 out vec4 color;
+out vec4 Position;
+
+
+
 
 void main () {
 	color = vColor;
+	Position = vPosition;	
 	gl_Position = projection * view * model * vPosition;
 }
 
