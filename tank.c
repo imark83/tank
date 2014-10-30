@@ -231,10 +231,12 @@ void key(unsigned char key, int x, int y) {
 	if (key == 27) exit (0);
 	switch (key) {
 		case '+': 
+		case 'a':
 			gear++;
 			gear = MIN (gear, 1);
 			break;
 		case '-':
+		case 'z':
 			gear--;
 			gear = MAX (gear, -1);
 			break;
