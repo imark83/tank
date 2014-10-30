@@ -23,7 +23,7 @@
 GLuint program[nPrograms];
 GLuint vao[nVao];
 
-GLuint nVertices[] = {84, 14, 24};
+GLuint nVertices[] = {84, 14, 24,3};
 
 // BUFFERS
 GLuint buffer[nVao];
@@ -35,6 +35,7 @@ GLfloat viewMatrix[16];
 GLfloat projectionMatrix[16];
 GLfloat greenColor[] = {0.19922, 0.48438, 0.18359, 1.0};
 GLfloat blackColor[] = {0.0, 0.0, 0.0, 1.0};
+GLfloat darkGreenColor[] = {0.04922, 0.30438, 0.03359, 1.0};
 
 
 
@@ -132,6 +133,22 @@ void display () {
 	// DRAW TANK FACES
 	glBindVertexArray (vao[tankLines]);
 	glDrawArrays (GL_LINES, 0, nVertices[tankLines]);
+
+
+
+	// MODEL TRANSFORMS FOR TANK TRIANGLE
+	matrixID (modelMatrix);
+	scale (modelMatrix, 1.02);
+	rotateY (modelMatrix, tankPhi);
+	translate (modelMatrix, x, y, z);
+
+	glUniformMatrix4fv (glGetUniformLocation (program[tankProgram], "model"), 
+			1, GL_FALSE, modelMatrix);
+
+	glUniform4fv (glGetUniformLocation (program[tankProgram], "vColor"), 1, darkGreenColor);
+	// DRAW TANK FACES
+	glBindVertexArray (vao[tankTriangle]);
+	glDrawArrays (GL_TRIANGLES, 0, nVertices[tankTriangle]);
 
 
 	glFlush ();
