@@ -7,7 +7,7 @@ in vec4 Position;
 
 void main () {
 	vec3 Ambient = vec3 (0.2, 0.2, 0.2);
-	vec3 LightColor = vec3(1, 1, 1);
+	vec3 LightColor = vec3(2, 2, 2);
 	vec3 LightPosition = vec3 (0, 2, 0);
 	float Shininess = 1.0;
 	float Strength = 1.0;
@@ -20,5 +20,5 @@ void main () {
 	vec3 scatteredLight = Ambient + LightColor*attenuation;
 	vec3 rgb = min (color.rgb * scatteredLight, vec3(1.0));
 
-	fColor = 0.8*vec4(rgb, color.a); 
+	fColor = 0.6*vec4(rgb, color.a); 
 }
